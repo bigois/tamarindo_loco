@@ -4,18 +4,23 @@
              xmlns:local="clr-namespace:Mobile01"
              x:Class="Mobile01.MainPage">
 
+    <!-- CONFIGURA A ORIENTAÇÃO VERTICAL NO TOPO DA PÁGINA -->
     <Grid VerticalOptions="Start">
+        
+        <!-- DEFINE A QUANTIDADE DE COLUNAS (NESTE CASO, DUAS) -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <!-- DEFINE A QUANTIDADE DE LINHAS (NESTE CASO, TRÊS) -->
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <!-- DEFINE UM TEXTO INFORMANDO LINHA, COLUNA E CONTEÚDO -->
         <Label Grid.Row="0" Grid.Column="0" Text="Azera V6" />
         <Label Grid.Row="0" Grid.Column="1" Text="60000" />
         <Label Grid.Row="1" Grid.Column="0" Text="Fiesta 2.0" />
