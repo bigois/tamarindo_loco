@@ -12,8 +12,8 @@ namespace Mobile01 {
             Veiculos.Add(new Veiculo("Fiesta 2.0", 50000.0));
             Veiculos.Add(new Veiculo("HB20 S", 40000.0));
 
-            // ADICIONO A LISTA DE VEÍCULOS COMO FONTE DE DADOS
-            listViewVeiculos.ItemsSource = this.Veiculos;
+            // INFORMA QUE A FONTE DE DADOS DO MAINPAGE.XAML SERÁ ESTÁ CLASSE
+            this.BindingContext = this;
         }
     }
 }
