@@ -2,12 +2,12 @@
 
 namespace Mobile01 {
     public class Veiculo {
-        private String nome { get; set; }
-        private Double preco { get; set; }
+        private String Nome { get; set; }
+        private Double Preco { get; set; }
 
-        public Veiculo(string nome, double preco) {
-            this.nome = nome;
-            this.preco = preco;
+        public Veiculo(string Nome, double Preco) {
+            this.Nome = Nome;
+            this.Preco = Preco;
         }
     }
 }
