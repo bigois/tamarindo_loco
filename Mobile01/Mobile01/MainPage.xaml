@@ -1,31 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Mobile01"
              x:Class="Mobile01.MainPage">
 
-    <!-- CONFIGURA A ORIENTAÇÃO VERTICAL NO TOPO DA PÁGINA -->
-    <Grid VerticalOptions="Start">
-        
-        <!-- DEFINE A QUANTIDADE DE COLUNAS (NESTE CASO, DUAS) -->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
-        <!-- DEFINE A QUANTIDADE DE LINHAS (NESTE CASO, TRÊS) -->
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
-        <!-- DEFINE UM TEXTO INFORMANDO LINHA, COLUNA E CONTEÚDO -->
-        <Label Grid.Row="0" Grid.Column="0" Text="Azera V6" />
-        <Label Grid.Row="0" Grid.Column="1" Text="60000" />
-        <Label Grid.Row="1" Grid.Column="0" Text="Fiesta 2.0" />
-        <Label Grid.Row="1" Grid.Column="1" Text="50000" />
-        <Label Grid.Row="2" Grid.Column="0" Text="HB20 S" />
-        <Label Grid.Row="2" Grid.Column="1" Text="40000" />
-    </Grid>
+    <!-- LISTA -->
+    <ListView x:Name="listViewVeiculos">
+        <!-- EDITA O TEMPLATE DE LISTA (PARA NÃO EXIBIR O ENDEREÇO DO OBJETO) -->
+        <ListView.ItemTemplate>
+            <!-- INICIA A EDIÇÃO DO TEMPLATE DE DADOS -->
+            <DataTemplate>
+                <!-- ADICIONA UMA VIEWCELL -->
+                <ViewCell>
+                    <!-- DENTRO DE CADA LINHA -->
+                    <ViewCell.View>
+                        <!-- ADICIONA UM LABEL QUE SERÁ MONTADO A PARTIR DA 
+                        PROPRIEDADE ITEMSOURCE COM O IDENTIFICADOR NOME -->
+                        <Label Text="{Binding Nome}"/>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
+    
