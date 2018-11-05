@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestDrive.Views.ListagemPage"
+             Title="Test Drive">
+    <ContentPage.Content>
+        <StackLayout Padding="25">
+            <!-- LISTA COM DEFINICAÇÃO DE FONTE DE DADOS NA PROPRIEDADE VEICULOS-->
+            <ListView x:Name="ListViewVeiculos"
+                      ItemsSource="{Binding Veiculos}">
+                <!-- EDITA O TEMPLATE DE LISTA (PARA NÃO EXIBIR O ENDEREÇO DO OBJETO) -->
+                <ListView.ItemTemplate>
+                    <!-- INICIA A EDIÇÃO DO TEMPLATE DE DADOS -->
+                    <DataTemplate>
+                        <!-- ADICIONA UMA VIEWCELL -->
+                        <ViewCell>
+                            <!-- DENTRO DE CADA LINHA -->
+                            <ViewCell.View>
+                                <!-- ADICIONA UMA PILHA DE LAYOUTS PARA A HORIZONTAL -->
+                                <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center">
+                                    <!-- NOME DO VEÍCULO -->
+                                    <Label Text="{Binding Nome}"/>
+                                    <Label Text=" - "/>
+                                    <!-- PREÇO DO ALUGUEL DO VEÍCULO -->
+                                    <Label Text="{Binding Preco,
+                                                  StringFormat='R$ {0:N}'}"/>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
