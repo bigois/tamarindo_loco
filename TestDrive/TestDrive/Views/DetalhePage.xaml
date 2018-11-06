@@ -5,12 +5,29 @@
     <ContentPage.Content>
         <!-- DELIMITA UMA MARGEM MÍNIMA DE 25 DP -->
         <StackLayout Padding="25">
-            <Label Text="Esta é a página de detalhes"
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="CenterAndExpand"/>
+            <!-- INICIA UMA VISUALIZAÇÃO EM TABELA-->
+            <TableView Intent="Settings">
+                <!-- DELIMITA A RAÍZ -->
+                <TableRoot>
+                    <!-- BLOCO DE DETALHES -->
+                    <TableSection Title="Acessórios">
+                        <SwitchCell x:Name="SwitchFreio" 
+                                    Text="{Binding TextFreioABS}"
+                                    On="True"/>
+                        <SwitchCell x:Name="SwitchArCondicionado" 
+                                    Text="{Binding TextArCondicionado}"/>
+                        <SwitchCell x:Name="SwitchMP3" 
+                                    Text="{Binding TextMP3Player}"
+                                    On="True"/>
+                        <TextCell x:Name="TextTotal"
+                                  Text="R$ 4,000.00"/>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
             <!-- BOTÃO PARA AVANÇAR PARA A PÁGINA DE AGENDAMENTO -->
             <Button x:Name="ButtonProximo"
-                    Text="Próximo"/>
+                    Text="Próximo"
+                    VerticalOptions="End"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
