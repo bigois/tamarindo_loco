@@ -4,9 +4,63 @@
              x:Class="TestDrive.Views.AgendamentoPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Esta é a página de agendamento"
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="CenterAndExpand"/>
+            <!-- VISUALIZAÇÃO EM TABELA DO TIPO FORMULÁRIO -->
+            <TableView Intent="Form">
+                <TableRoot>
+                    <!-- BLOCO DE INFORMAÇÕES DO CLIENTE COM BINDING DIRETO NOS ATRIBUTOS -->
+                    <TableSection Title="Seus Dados">
+                        <EntryCell x:Name="EntryNome"
+                                   Label="Nome:"
+                                   Keyboard="Text"
+                                   Placeholder="Insira seu nome"
+                                   Text="{Binding Nome}"/>
+                        <EntryCell x:Name="EntryTelefone"
+                                   Label="Telefone:"
+                                   Placeholder="(11) 95422-6833"
+                                   Keyboard="Telephone"
+                                   Text="{Binding Telefone}"/>
+                        <EntryCell x:Name="EntryEmail"
+                                   Label="E-mail:"
+                                   Placeholder="guilherme@outlook.com"
+                                   Keyboard="Email"
+                                   Text="{Binding Email}"/>
+                    </TableSection>
+                    <!-- BLOCO DE INFORMAÇÕES DE AGENDAMENTO COM BINDING DIRETO NOS ATRIBUTOS -->
+                    <TableSection Title="Agendamento">
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Data:" 
+                                           VerticalOptions="Center"
+                                           Margin="15, 0, 0, 0"/>
+                                    <DatePicker x:Name="DateAgendamento"
+                                            MinimumDate="{Binding DataAgendamento}"
+                                            Date="{Binding DataAgendamento}" 
+                                            HorizontalOptions="FillAndExpand"
+                                            Margin="0, 0, 8, 0"/>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Hora:" 
+                                           VerticalOptions="Center"
+                                           Margin="15, 0, 0, 0"/>
+                                    <TimePicker x:Name="TimeHora"
+                                                HorizontalOptions="FillAndExpand"
+                                                Margin="0, 0, 8, 0"
+                                                Time="{Binding HoraAgendamento}"/>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <!-- BOTÃO PARA CONFIRMAR A AÇÃO DE AGENDAMENTO -->
+            <Button x:Name="ButtonAgendar"
+                    Text="Agendar"
+                    VerticalOptions="End"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -34,6 +34,12 @@ namespace TestDrive.Views {
         // PROPRIEDADE GLOBAL PARA FACILITAR O TRANSPORTE
         public Veiculo Veiculo { get; set; }
 
+        public Double valorTotal;
+        public Double ValorTotal {
+            get { return valorTotal; }
+            set { valorTotal = value;  }
+        }
+
         public DetalhePage(Veiculo veiculo) {
             InitializeComponent();
 
@@ -43,7 +49,9 @@ namespace TestDrive.Views {
             // ALTERA O TÍTULO COM BASE NO NOME DO VEÍCULO
             Title = veiculo.Nome;
 
-            TextTotal.Text = String.Format("Valor Total: R$ {0:N}", Veiculo.Preco + FREIO_ABS + MP3_PLAYER);
+            // ATRIBUI O VALOR TOTAL COMO INICIALIZADOR
+            valorTotal = Veiculo.Preco + FREIO_ABS + MP3_PLAYER;
+            TextTotal.Text = String.Format("Valor Total: R$ {0:N}", ValorTotal);
 
             // VINCULA O MÉTODO DE CLIQUE COM A AÇÃO DE CLIQUE NO BOTÃO
             ButtonProximo.Clicked += ButtonProximoClicked;
@@ -59,7 +67,7 @@ namespace TestDrive.Views {
 
         // MÉTODO PARA MUDANÇA DE SWITCHES
         private void OnSwitchChanged(Object sender, ToggledEventArgs e) {
-            Double ValorTotal = Veiculo.Preco;
+            ValorTotal = Veiculo.Preco;
 
             // VERIFICA SE OS SWITCHES ESTÃO SELECIONADOS,
             // CASO SIM, SOMA OS VALORES
@@ -72,7 +80,7 @@ namespace TestDrive.Views {
 
         // AÇÃO DO BOTÃO DE NAVEGAÇÃO PARA A PÁGINA AGENDAMENTO
         private void ButtonProximoClicked(Object sender, EventArgs e) {
-            Navigation.PushAsync(new AgendamentoPage(Veiculo));
+            Navigation.PushAsync(new AgendamentoPage(Veiculo, ValorTotal));
         }
     }
 }
