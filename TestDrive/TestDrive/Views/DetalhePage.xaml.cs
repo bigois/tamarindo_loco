@@ -6,33 +6,28 @@ using Xamarin.Forms.Xaml;
 namespace TestDrive.Views {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DetalhePage : ContentPage {
-        // DECLARAÇÃO DE CONSTANTES
-        private const Double FREIO_ABS = 800.0;
-        private const Double AR_CONDICIONADO = 1000.0;
-        private const Double MP3_PLAYER = 500.0;
+        // PROPRIEDADE GLOBAL PARA FACILITAR O TRANSPORTE
+        public Veiculo Veiculo { get; set; }
 
         // MÉTODO FEIO DE FORMTAÇÃO DE TEXTO DO SWITCH FREIO ABS
         public String TextFreioABS {
             get {
-                return String.Format("Freio ABS - R$ {0:N}", FREIO_ABS);
+                return String.Format("Freio ABS - R$ {0:N}", Veiculo.FREIO_ABS);
             }
         }
 
         // MÉTODO FEIO DE FORMATAÇÃO DE TEXTO DO SWITCH AR CONDICIONADO
         public String TextArCondicionado {
             get {
-                return String.Format("Ar Condicionado - R$ {0:N}", AR_CONDICIONADO);
+                return String.Format("Ar Condicionado - R$ {0:N}", Veiculo.AR_CONDICIONADO);
             }
         }
 
         public String TextMP3Player {
             get {
-                return String.Format("MP3 Player - R$ {0:N}", MP3_PLAYER);
+                return String.Format("MP3 Player - R$ {0:N}", Veiculo.MP3_PLAYER);
             }
         }
-
-        // PROPRIEDADE GLOBAL PARA FACILITAR O TRANSPORTE
-        public Veiculo Veiculo { get; set; }
 
         public Double valorTotal;
         public Double ValorTotal {
