@@ -14,6 +14,8 @@ namespace TestDrive.Models {
         public Double Preco { get; set; }
         public Double ValorTotal { get; set; }
 
+        public Veiculo() { }
+
         // CONSTRUTOR PARA FORÇAR OS VALORES PRÉ-INICIADOS
         public Veiculo(String nome, Double preco) {
             Nome = nome;

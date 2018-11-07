@@ -1,61 +1,33 @@
 ﻿using System;
 using TestDrive.Models;
+using TestDrive.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace TestDrive.Views {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AgendamentoPage : ContentPage {
-        // PROPRIEDADE GLOBAL PARA FACILITAR O TRANSPORTE
-        public Veiculo Veiculo { get; set; }
-        public Double ValorTotal { get; set; }
+        public AgendamentoViewModel AgendamentoViewModel { get; set; }
 
-        // ATRIBUTOS DE CLIENTE
-        public String Nome { get; set; }
-        public String Telefone { get; set; }
-        public String Email { get; set; }
-
-        // ATRIBUTOS DO AGENDAMENTO
-        public TimeSpan HoraAgendamento { get; set; }
-
-        public DateTime dataAgendamento = DateTime.Today;
-        public DateTime DataAgendamento {
-            get { return dataAgendamento; }
-            set { dataAgendamento = value; }
-        }
-
-        public AgendamentoPage(Veiculo veiculo, double valorTotal) {
-            // DEFINE ESTA CLASSE COMO CONTEXTO DE BINDING
-            BindingContext = this;
-
+        public AgendamentoPage(Veiculo veiculo) {
             InitializeComponent();
 
-            // ATRÍBUI O VEÍCULO RECEBIDO PARA A VARIÁVEL INTERNA
-            Veiculo = veiculo;
-            ValorTotal = valorTotal;
-
-            // ALTERA O TÍTULO COM BASE NO NOME DO VEÍCULO
-            Title = veiculo.Nome;
+            AgendamentoViewModel = new AgendamentoViewModel(veiculo);
+            BindingContext = AgendamentoViewModel;
 
             ButtonAgendar.Clicked += ButtonAgendarClicked;
         }
 
         private void ButtonAgendarClicked(Object sender, EventArgs e) {
             DisplayAlert("Agendamento",
-                String.Format(@"Nome: {0}
-Telefone: {1}
-E-mail: {2}
-Data de Agendamento: {3}
-Hora do Agendamento: {4}
-Veículo: {5}
-Valor: {6:N}",
-                                Nome,
-                                Telefone,
-                                Email,
-                                DataAgendamento.ToString("dd/MM/yyyy"),
-                                HoraAgendamento,
-                                Veiculo.Nome,
-                                ValorTotal), "Ok");
+                String.Format("Nome: {0}\nTelefone: {1}\nE -mail: {2}\nData de Agendamento: {3}\nHora do Agendamento: {4}\nVeículo: {5}\nValor: {6:N}",
+                                AgendamentoViewModel.Agendamento.Cliente.Nome,
+                                AgendamentoViewModel.Agendamento.Cliente.Telefone,
+                                AgendamentoViewModel.Agendamento.Cliente.Email,
+                                AgendamentoViewModel.Agendamento.DataAgendamento.ToString("dd/MM/yyyy"),
+                                AgendamentoViewModel.Agendamento.HoraAgendamento,
+                                AgendamentoViewModel.Agendamento.Veiculo.Nome,
+                                AgendamentoViewModel.Agendamento.Veiculo.ValorTotal), "Ok");
         }
     }
 }

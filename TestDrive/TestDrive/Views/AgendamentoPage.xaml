@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TestDrive.Views.AgendamentoPage">
+             x:Class="TestDrive.Views.AgendamentoPage"
+             Title="{Binding Agendamento.Veiculo.Nome}">
     <ContentPage.Content>
         <StackLayout>
             <!-- VISUALIZAÇÃO EM TABELA DO TIPO FORMULÁRIO -->
@@ -13,17 +14,17 @@
                                    Label="Nome:"
                                    Keyboard="Text"
                                    Placeholder="Insira seu nome"
-                                   Text="{Binding Nome}"/>
+                                   Text="{Binding Agendamento.Cliente.Nome}"/>
                         <EntryCell x:Name="EntryTelefone"
                                    Label="Telefone:"
                                    Placeholder="(11) 95422-6833"
                                    Keyboard="Telephone"
-                                   Text="{Binding Telefone}"/>
+                                   Text="{Binding Agendamento.Cliente.Telefone}"/>
                         <EntryCell x:Name="EntryEmail"
                                    Label="E-mail:"
                                    Placeholder="guilherme@outlook.com"
                                    Keyboard="Email"
-                                   Text="{Binding Email}"/>
+                                   Text="{Binding Agendamento.Cliente.Email}"/>
                     </TableSection>
                     <!-- BLOCO DE INFORMAÇÕES DE AGENDAMENTO COM BINDING DIRETO NOS ATRIBUTOS -->
                     <TableSection Title="Agendamento">
@@ -34,8 +35,8 @@
                                            VerticalOptions="Center"
                                            Margin="15, 0, 0, 0"/>
                                     <DatePicker x:Name="DateAgendamento"
-                                            MinimumDate="{Binding DataAgendamento}"
-                                            Date="{Binding DataAgendamento}" 
+                                            MinimumDate="{Binding Agendamento.DataAgendamento}"
+                                            Date="{Binding Agendamento.DataAgendamento}" 
                                             HorizontalOptions="FillAndExpand"
                                             Margin="0, 0, 8, 0"/>
                                 </StackLayout>
@@ -50,7 +51,7 @@
                                     <TimePicker x:Name="TimeHora"
                                                 HorizontalOptions="FillAndExpand"
                                                 Margin="0, 0, 8, 0"
-                                                Time="{Binding HoraAgendamento}"/>
+                                                Time="{Binding Agendamento.HoraAgendamento}"/>
                                 </StackLayout>
                             </ViewCell.View>
                         </ViewCell>

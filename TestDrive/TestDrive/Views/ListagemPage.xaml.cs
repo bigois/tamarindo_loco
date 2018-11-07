@@ -7,21 +7,11 @@ using Xamarin.Forms.Xaml;
 namespace TestDrive.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ListagemPage : ContentPage {
-        // LISTA DE VEÍCULOS PARA ACESSO PÚBLICO
-        public List<Veiculo> Veiculos { get; set; }
-
         public ListagemPage() {
 			InitializeComponent();
 
-            // CHAMA O CONSTRUTOR DA CLASSE DE LISTAGEM
-            // PARA RECUPERAR A LISTA DE VEÍCULOS
-            Veiculos = new ListagemVeiculos().Veiculos;
-
             // ADICIONA O EVENTO DE CLIQUE NA LISTA
             ListViewVeiculos.ItemTapped += ListViewVeiculosItemTapped;
-
-            // INFORMA QUE O CONTEXTO DE MONTAGEM É A PRÓPRIA CLASSE
-            BindingContext = this;
         }
 
         // MÉTODO CHAMADO AO TOCAR EM CADA ITEM DA LISTAGEM

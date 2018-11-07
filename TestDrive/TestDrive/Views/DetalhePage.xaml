@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TestDrive.Views.DetalhePage">
+             x:Class="TestDrive.Views.DetalhePage"
+             Title="{Binding Veiculo.Nome}">
     <ContentPage.Content>
         <!-- DELIMITA UMA MARGEM MÍNIMA DE 25 DP -->
         <StackLayout Padding="25">
@@ -20,7 +21,7 @@
                                     Text="{Binding TextMP3Player}"
                                     On="True"/>
                         <TextCell x:Name="TextTotal"
-                                  Text="R$ 4,000.00"/>
+                                  Text="{Binding Veiculo.ValorTotal, StringFormat='Valor Total: R$ {0:N}'}"/>
                     </TableSection>
                 </TableRoot>
             </TableView>
