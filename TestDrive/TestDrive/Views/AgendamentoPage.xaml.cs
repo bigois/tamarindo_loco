@@ -18,22 +18,30 @@ namespace TestDrive.Views {
 
         protected override void OnAppearing() {
             base.OnAppearing();
-            MessagingCenter.Subscribe<Agendamento>(this, "VeiculoAgendado", (agendamento) => {
-                DisplayAlert("Agendamento", 
-                    String.Format("Nome: {0}\nTelefone: {1}\nE -mail: {2}\nData de Agendamento: {3}\nHora do Agendamento: {4}\nVeículo: {5}\nValor: {6:N}",
-                               agendamento.Cliente.Nome,
-                               agendamento.Cliente.Telefone,
-                               agendamento.Cliente.Email,
-                               agendamento.DataAgendamento.ToString("dd/MM/yyyy"),
-                               agendamento.HoraAgendamento,
-                               agendamento.Veiculo.Nome,
-                               agendamento.Veiculo.ValorTotal), "Ok");
+
+            MessagingCenter.Subscribe<Agendamento>(this, "AgendamentoSucesso", (agendamento) => {
+                DisplayAlert("Agendamento", "Dados salvos com sucesso!", "Ok");
+            });
+
+            MessagingCenter.Subscribe<ArgumentException>(this, "AgendamentoFalha", (exception) => {
+                DisplayAlert("Agendamento", "Ocorreu um erro durante o salvamente dos dados.\n" +
+                    "Verifique as informações e tente novamente", "Ok");
+            });
+
+            MessagingCenter.Subscribe<Agendamento>(this, "VeiculoAgendado", async (agendamento) => {
+                var confirma = await DisplayAlert("Salvar Agendamento", "Deseja mesmo enviar o agendamento?", "sim", "não");
+
+                if (confirma) {
+                    AgendamentoViewModel.SalvarAgendamento();
+                }
             });
         }
 
         protected override void OnDisappearing() {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<Agendamento>(this, "VeiculoAgendado");
+            MessagingCenter.Unsubscribe<Agendamento>(this, "AgendamentoSucesso");
+            MessagingCenter.Unsubscribe<ArgumentException>(this, "AgendamentoFalha");
         }
     }
 }

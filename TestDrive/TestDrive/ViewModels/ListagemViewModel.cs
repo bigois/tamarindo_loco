@@ -5,11 +5,24 @@ using System.Threading.Tasks;
 using TestDrive.Models;
 using Xamarin.Forms;
 using System.Collections.Generic;
+using System;
+using System.ComponentModel;
 
 namespace TestDrive.ViewModels {
-    public class ListagemViewModel {
+    public class ListagemViewModel : BaseViewModel {
         private const string URI = "http://aluracar.herokuapp.com";
         public ObservableCollection<Veiculo> Veiculos { get; set; }
+
+        private Boolean aguarde;
+
+        public Boolean Aguarde {
+            get { return aguarde; }
+            set {
+                aguarde = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(Aguarde));
+            }
+        }
 
         private Veiculo veiculoSelecionado;
         public Veiculo VeiculoSelecionado {
@@ -28,6 +41,8 @@ namespace TestDrive.ViewModels {
         }
 
         public async Task GetVeiculos() {
+            Aguarde = true;
+
             HttpClient client = new HttpClient();
 
             var resultado = await client.GetStringAsync(URI);
@@ -36,7 +51,8 @@ namespace TestDrive.ViewModels {
             foreach (var veiculoJson in veiculosJson) {
                 Veiculos.Add(veiculoJson);
             }
-            
+
+            Aguarde = false;
         }
     }
 }

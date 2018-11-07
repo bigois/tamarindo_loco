@@ -5,6 +5,10 @@
              Title="Test Drive">
     <ContentPage.Content>
         <StackLayout Padding="25">
+            <ActivityIndicator IsRunning="{Binding Aguarde}"
+                               IsVisible="{Binding Aguarde}"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"/>
             <ListView x:Name="ListViewVeiculos"
                       ItemsSource="{Binding Veiculos}"
                       SelectedItem="{Binding VeiculoSelecionado}">
@@ -13,8 +17,8 @@
                         <ViewCell>
                             <ViewCell.View>
                                 <StackLayout Orientation="Horizontal"
-                                     HorizontalOptions="Center"
-                                     VerticalOptions="Center">
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center">
                                     <Label Text="{Binding Nome}"/>
                                     <Label Text=" - "/>
                                     <Label Text="{Binding Preco,
