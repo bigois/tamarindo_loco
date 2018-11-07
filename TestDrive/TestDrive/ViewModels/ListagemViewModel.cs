@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Net.Http;
 using TestDrive.Models;
 using Xamarin.Forms;
 
 namespace TestDrive.ViewModels {
     public class ListagemViewModel {
+        private const string URI = "http://aluracar.herokuapp.com";
         public List<Veiculo> Veiculos { get; set; }
 
         private Veiculo veiculoSelecionado;
@@ -17,10 +19,14 @@ namespace TestDrive.ViewModels {
                 }
             }
         }
-        
 
         public ListagemViewModel() {
             Veiculos = new ListagemVeiculos().Veiculos;
+        }
+
+        public async void GetVeiculos() {
+            HttpClient client = new HttpClient();
+            var resultado = await client.GetStringAsync(URI);
         }
     }
 }
