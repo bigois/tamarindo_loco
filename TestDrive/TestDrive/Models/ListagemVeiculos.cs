@@ -8,19 +8,20 @@ namespace TestDrive.Models {
         // CONSTRUTOR COM A LISTA DE VEICULOS
         public ListagemVeiculos() {
             Veiculos = new List<Veiculo>() {
-                new Veiculo { Nome = "Azera V6", Preco = 85000 },
-                new Veiculo { Nome = "Onix 1.6", Preco = 35000 },
-                new Veiculo { Nome = "Fiesta 2.0", Preco = 52000 },
-                new Veiculo { Nome = "C3 1.0", Preco = 22000 },
-                new Veiculo { Nome = "Uno Fire", Preco = 11000 },
-                new Veiculo { Nome = "Sentra 2.0", Preco = 53000 },
-                new Veiculo { Nome = "Astra Sedan", Preco = 39000 },
-                new Veiculo { Nome = "Vectra 2.0 Turbo", Preco = 37000 },
-                new Veiculo { Nome = "Hilux 4x4", Preco = 90000 },
-                new Veiculo { Nome = "Montana Sport", Preco = 57000 },
-                new Veiculo { Nome = "Outlander 2.4", Preco = 99000 },
-                new Veiculo { Nome = "Brasilia Amarela", Preco = 9500 },
-                new Veiculo { Nome = "Omega Hatch", Preco = 8000 }
+                new Veiculo ("Azera V6", 85000.0),
+                new Veiculo ("Onix 1.6", 35000.0),
+                new Veiculo ("Fiesta 2.0", 52000.0),
+                new Veiculo ("C3 1.0", 22000.0),
+                new Veiculo ("Uno Fire",  11000.0),
+                new Veiculo ("Sentra 2.0", 53000.0),
+                new Veiculo ("Astra Sedan", 39000.0),
+                new Veiculo ("Vectra 2.0 Turbo", 37000.0),
+                new Veiculo ("Hilux 4x4", 90000.0),
+                new Veiculo ("Montana Sport", 57000.0),
+                new Veiculo ("Outlander 2.4", 99000.0),
+                new Veiculo ("Brasilia Amarela", 9500.0),
+                new Veiculo ("Omega Hatch", 8000.0)
+
             };
         }
     }

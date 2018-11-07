@@ -29,12 +29,6 @@ namespace TestDrive.Views {
             }
         }
 
-        public Double valorTotal;
-        public Double ValorTotal {
-            get { return valorTotal; }
-            set { valorTotal = value;  }
-        }
-
         public DetalhePage(Veiculo veiculo) {
             InitializeComponent();
 
@@ -45,8 +39,7 @@ namespace TestDrive.Views {
             Title = veiculo.Nome;
 
             // ATRIBUI O VALOR TOTAL COMO INICIALIZADOR
-            valorTotal = Veiculo.Preco + FREIO_ABS + MP3_PLAYER;
-            TextTotal.Text = String.Format("Valor Total: R$ {0:N}", ValorTotal);
+            TextTotal.Text = String.Format("Valor Total: R$ {0:N}", Veiculo.ValorTotal);
 
             // VINCULA O MÉTODO DE CLIQUE COM A AÇÃO DE CLIQUE NO BOTÃO
             ButtonProximo.Clicked += ButtonProximoClicked;
@@ -60,22 +53,14 @@ namespace TestDrive.Views {
             SwitchArCondicionado.OnChanged += OnSwitchChanged;
         }
 
-        // MÉTODO PARA MUDANÇA DE SWITCHES
-        private void OnSwitchChanged(Object sender, ToggledEventArgs e) {
-            ValorTotal = Veiculo.Preco;
-
-            // VERIFICA SE OS SWITCHES ESTÃO SELECIONADOS,
-            // CASO SIM, SOMA OS VALORES
-            if (SwitchFreio.On) { ValorTotal += FREIO_ABS; }
-            if (SwitchMP3.On) { ValorTotal += MP3_PLAYER; }
-            if (SwitchArCondicionado.On) { ValorTotal += AR_CONDICIONADO; }
-
-            TextTotal.Text = String.Format("Valor Total: R$ {0:N}", ValorTotal);
+        // MELHOR JEITO QUE ENCONTREI PARA RESOLVER O PROBLEMA
+        private void OnSwitchChanged(object sender, ToggledEventArgs e) {
+            Veiculo.CalculaValorTotal(SwitchFreio, SwitchMP3, SwitchArCondicionado, TextTotal);
         }
 
         // AÇÃO DO BOTÃO DE NAVEGAÇÃO PARA A PÁGINA AGENDAMENTO
         private void ButtonProximoClicked(Object sender, EventArgs e) {
-            Navigation.PushAsync(new AgendamentoPage(Veiculo, ValorTotal));
+            Navigation.PushAsync(new AgendamentoPage(Veiculo, Veiculo.ValorTotal));
         }
     }
 }

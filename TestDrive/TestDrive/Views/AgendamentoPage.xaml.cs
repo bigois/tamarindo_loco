@@ -19,7 +19,7 @@ namespace TestDrive.Views {
         public TimeSpan HoraAgendamento { get; set; }
 
         public DateTime dataAgendamento = DateTime.Today;
-        public DateTime DataAgendamento { 
+        public DateTime DataAgendamento {
             get { return dataAgendamento; }
             set { dataAgendamento = value; }
         }
@@ -48,10 +48,10 @@ E-mail: {2}
 Data de Agendamento: {3}
 Hora do Agendamento: {4}
 Veículo: {5}
-Valor: {6:N}", 
-                                Nome, 
-                                Telefone, 
-                                Email, 
+Valor: {6:N}",
+                                Nome,
+                                Telefone,
+                                Email,
                                 DataAgendamento.ToString("dd/MM/yyyy"),
                                 HoraAgendamento,
                                 Veiculo.Nome,
