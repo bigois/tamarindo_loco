@@ -13,13 +13,14 @@ namespace TestDrive.Views {
 
             ListagemViewModel = new ListagemViewModel();
             BindingContext = ListagemViewModel;
-
         }
 
         protected async override void OnAppearing() {
             base.OnAppearing();
 
-            await ListagemViewModel.GetVeiculos();
+            if (ListagemViewModel.Veiculos.Count < 1) {
+                await ListagemViewModel.GetVeiculos();
+            } 
 
             MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado" , (veiculo) => {
                 Navigation.PushAsync(new DetalhePage(veiculo));

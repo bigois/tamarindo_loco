@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Text;
 using System.Windows.Input;
@@ -24,7 +25,16 @@ namespace TestDrive.ViewModels {
         public async void SalvarAgendamento() {
             HttpClient client = new HttpClient();
 
-            var conteudo = new StringContent("", Encoding.UTF8, "application/json");
+            var json = JsonConvert.SerializeObject(new {
+                nome = Agendamento.Cliente.Nome,
+                fone = Agendamento.Cliente.Telefone,
+                email = Agendamento.Cliente.Email,
+                carro = Agendamento.Veiculo.Nome,
+                preco = Agendamento.Veiculo.Preco.ToString(),
+                dataAgendamento = "04/02/2019"
+            });
+
+            var conteudo = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await client.PostAsync(URI, conteudo);
 
             if (response.IsSuccessStatusCode) {

@@ -49,7 +49,7 @@ namespace TestDrive.ViewModels {
             var veiculosJson = JsonConvert.DeserializeObject<List<Veiculo>>(resultado);
 
             foreach (var veiculoJson in veiculosJson) {
-                Veiculos.Add(veiculoJson);
+                Veiculos.Add(new Veiculo(veiculoJson.Nome, veiculoJson.Preco));
             }
 
             Aguarde = false;
