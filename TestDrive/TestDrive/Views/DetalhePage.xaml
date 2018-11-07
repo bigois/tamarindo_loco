@@ -4,13 +4,9 @@
              x:Class="TestDrive.Views.DetalhePage"
              Title="{Binding Veiculo.Nome}">
     <ContentPage.Content>
-        <!-- DELIMITA UMA MARGEM MÍNIMA DE 25 DP -->
         <StackLayout Padding="25">
-            <!-- INICIA UMA VISUALIZAÇÃO EM TABELA-->
             <TableView Intent="Settings">
-                <!-- DELIMITA A RAÍZ -->
                 <TableRoot>
-                    <!-- BLOCO DE DETALHES -->
                     <TableSection Title="Acessórios">
                         <SwitchCell x:Name="SwitchFreio" 
                                     Text="{Binding TextFreioABS}"
@@ -25,10 +21,10 @@
                     </TableSection>
                 </TableRoot>
             </TableView>
-            <!-- BOTÃO PARA AVANÇAR PARA A PÁGINA DE AGENDAMENTO -->
             <Button x:Name="ButtonProximo"
                     Text="Próximo"
-                    VerticalOptions="End"/>
+                    VerticalOptions="End"
+                    Command="{Binding CommandProximo}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

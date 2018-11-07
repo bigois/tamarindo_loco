@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace TestDrive.Models {
     public class Cliente {
@@ -10,7 +8,7 @@ namespace TestDrive.Models {
 
         public Cliente() { }
 
-        public Cliente(string nome, string telefone, string email) {
+        public Cliente(String nome, String telefone, String email) {
             Nome = nome;
             Telefone = telefone;
             Email = email;

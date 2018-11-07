@@ -5,10 +5,8 @@
              Title="{Binding Agendamento.Veiculo.Nome}">
     <ContentPage.Content>
         <StackLayout>
-            <!-- VISUALIZAÇÃO EM TABELA DO TIPO FORMULÁRIO -->
             <TableView Intent="Form">
                 <TableRoot>
-                    <!-- BLOCO DE INFORMAÇÕES DO CLIENTE COM BINDING DIRETO NOS ATRIBUTOS -->
                     <TableSection Title="Seus Dados">
                         <EntryCell x:Name="EntryNome"
                                    Label="Nome:"
@@ -26,7 +24,6 @@
                                    Keyboard="Email"
                                    Text="{Binding Agendamento.Cliente.Email}"/>
                     </TableSection>
-                    <!-- BLOCO DE INFORMAÇÕES DE AGENDAMENTO COM BINDING DIRETO NOS ATRIBUTOS -->
                     <TableSection Title="Agendamento">
                         <ViewCell>
                             <ViewCell.View>
@@ -58,7 +55,6 @@
                     </TableSection>
                 </TableRoot>
             </TableView>
-            <!-- BOTÃO PARA CONFIRMAR A AÇÃO DE AGENDAMENTO -->
             <Button x:Name="ButtonAgendar"
                     Text="Agendar"
                     VerticalOptions="End"/>

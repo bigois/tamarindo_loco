@@ -9,25 +9,18 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Padding="25">
-            <!-- LISTA COM DEFINICAÇÃO DE FONTE DE DADOS NA PROPRIEDADE VEICULOS-->
             <ListView x:Name="ListViewVeiculos"
-                      ItemsSource="{Binding Veiculos}">
-                <!-- EDITA O TEMPLATE DE LISTA (PARA NÃO EXIBIR O ENDEREÇO DO OBJETO) -->
+                      ItemsSource="{Binding Veiculos}"
+                      SelectedItem="{Binding VeiculoSelecionado}">
                 <ListView.ItemTemplate>
-                    <!-- INICIA A EDIÇÃO DO TEMPLATE DE DADOS -->
                     <DataTemplate>
-                        <!-- ADICIONA UMA VIEWCELL -->
                         <ViewCell>
-                            <!-- DENTRO DE CADA LINHA -->
                             <ViewCell.View>
-                                <!-- ADICIONA UMA PILHA DE LAYOUTS PARA A HORIZONTAL -->
                                 <StackLayout Orientation="Horizontal"
                                      HorizontalOptions="Center"
                                      VerticalOptions="Center">
-                                    <!-- NOME DO VEÍCULO -->
                                     <Label Text="{Binding Nome}"/>
                                     <Label Text=" - "/>
-                                    <!-- PREÇO DO ALUGUEL DO VEÍCULO -->
                                     <Label Text="{Binding Preco,
                                                   StringFormat='R$ {0:N}'}"/>
                                 </StackLayout>

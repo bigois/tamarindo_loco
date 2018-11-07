@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using TestDrive.Models;
+﻿using TestDrive.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,19 +7,18 @@ namespace TestDrive.Views {
 	public partial class ListagemPage : ContentPage {
         public ListagemPage() {
 			InitializeComponent();
-
-            // ADICIONA O EVENTO DE CLIQUE NA LISTA
-            ListViewVeiculos.ItemTapped += ListViewVeiculosItemTapped;
         }
 
-        // MÉTODO CHAMADO AO TOCAR EM CADA ITEM DA LISTAGEM
-        private void ListViewVeiculosItemTapped(Object sender, ItemTappedEventArgs e) {
-            // RETORNA O VALOR CONTIDO EM ITEMTAPPEDEVENTARGS
-            // QUE FOI TOCADO PELO USUÁRIO
-            var veiculo = (Veiculo) e.Item;
+        protected override void OnAppearing() {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado" , (veiculo) => {
+                Navigation.PushAsync(new DetalhePage(veiculo));
+            });
+        }
 
-            // CHAMA A PÁGINA DE DETALHE PASSANDO O VEÍCULO
-            Navigation.PushAsync(new DetalhePage(veiculo));
+        protected override void OnDisappearing() {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Veiculo>(this, "VeiculoSelecionado");
         }
     }
 }

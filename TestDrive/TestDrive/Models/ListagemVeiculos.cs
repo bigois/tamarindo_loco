@@ -2,10 +2,8 @@
 
 namespace TestDrive.Models {
     public class ListagemVeiculos {
-        // LISTA DE VEÍCULOS
         public List<Veiculo> Veiculos { get; set; }
-
-        // CONSTRUTOR COM A LISTA DE VEICULOS
+        
         public ListagemVeiculos() {
             Veiculos = new List<Veiculo>() {
                 new Veiculo ("Azera V6", 85000.0),
@@ -21,7 +19,6 @@ namespace TestDrive.Models {
                 new Veiculo ("Outlander 2.4", 99000.0),
                 new Veiculo ("Brasilia Amarela", 9500.0),
                 new Veiculo ("Omega Hatch", 8000.0)
-
             };
         }
     }

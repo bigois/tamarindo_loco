@@ -1,15 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using TestDrive.Models;
+using Xamarin.Forms;
 
 namespace TestDrive.ViewModels {
     public class ListagemViewModel {
-        // LISTA DE VEÍCULOS PARA ACESSO PÚBLICO
         public List<Veiculo> Veiculos { get; set; }
 
-        // CHAMA O CONSTRUTOR DA CLASSE DE LISTAGEM
-        // PARA RECUPERAR A LISTA DE VEÍCULOS
+        private Veiculo veiculoSelecionado;
+        public Veiculo VeiculoSelecionado {
+            get { return veiculoSelecionado; }
+            set {
+                veiculoSelecionado = value;
+
+                if (veiculoSelecionado != null) {
+                    MessagingCenter.Send(veiculoSelecionado, "VeiculoSelecionado");
+                }
+            }
+        }
+        
+
         public ListagemViewModel() {
             Veiculos = new ListagemVeiculos().Veiculos;
         }
