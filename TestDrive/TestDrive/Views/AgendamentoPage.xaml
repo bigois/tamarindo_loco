@@ -8,20 +8,14 @@
             <TableView Intent="Form">
                 <TableRoot>
                     <TableSection Title="Seus Dados">
-                        <EntryCell x:Name="EntryNome"
-                                   Label="Nome:"
-                                   Keyboard="Text"
+                        <EntryCell Label="Nome:"
                                    Placeholder="Insira seu nome"
                                    Text="{Binding Agendamento.Cliente.Nome}"/>
-                        <EntryCell x:Name="EntryTelefone"
-                                   Label="Telefone:"
+                        <EntryCell Label="Telefone:"
                                    Placeholder="(11) 95422-6833"
-                                   Keyboard="Telephone"
                                    Text="{Binding Agendamento.Cliente.Telefone}"/>
-                        <EntryCell x:Name="EntryEmail"
-                                   Label="E-mail:"
+                        <EntryCell Label="E-mail:"
                                    Placeholder="guilherme@outlook.com"
-                                   Keyboard="Email"
                                    Text="{Binding Agendamento.Cliente.Email}"/>
                     </TableSection>
                     <TableSection Title="Agendamento">
@@ -57,7 +51,8 @@
             </TableView>
             <Button x:Name="ButtonAgendar"
                     Text="Agendar"
-                    VerticalOptions="End"/>
+                    VerticalOptions="End"
+                    Command="{Binding CommandAgendar}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
