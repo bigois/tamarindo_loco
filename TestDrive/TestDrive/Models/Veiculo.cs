@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using Xamarin.Forms;
 
 namespace TestDrive.Models {
@@ -7,7 +8,9 @@ namespace TestDrive.Models {
         public const Double AR_CONDICIONADO = 1000.0;
         public const Double MP3_PLAYER = 500.0;
 
+        [JsonProperty("nome")]
         public String Nome { get; set; }
+        [JsonProperty("preco")]
         public Double Preco { get; set; }
         public Double ValorTotal { get; set; }
 

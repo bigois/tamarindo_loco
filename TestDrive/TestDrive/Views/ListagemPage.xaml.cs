@@ -16,9 +16,11 @@ namespace TestDrive.Views {
 
         }
 
-        protected override void OnAppearing() {
+        protected async override void OnAppearing() {
             base.OnAppearing();
-            ListagemViewModel.GetVeiculos();
+
+            await ListagemViewModel.GetVeiculos();
+
             MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado" , (veiculo) => {
                 Navigation.PushAsync(new DetalhePage(veiculo));
             });
